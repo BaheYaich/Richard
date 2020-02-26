@@ -1,53 +1,162 @@
 html {
-    /* Setting a base font size of 10px give us easier rem calculations
-       Info: 1rem === 10px, 1.5rem === 15px, 2rem === 20px and so forth
-     */
-    font-size: 10px;
+  font-family: "Alegreya Sans SC", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  background-color: #333;
+}
+
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "header" "image" "caption" "text_content" "Read_more_button" "footer";
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+h1 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-bottom: -5em;
+  text-align: center;
+  color: orangered;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: header;
+  letter-spacing: 1rem;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+#img-div {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: image;
+  overflow: hidden;
+}
+
+#img-div #image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100vw;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+#img-caption {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: caption;
+  text-align: center;
+  color: #797361;
+  font-size: 0.5em;
+}
+
+#tribute-info {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  grid-area: text_content;
+  color: orangered;
+}
+
+p {
+  text-align: justify;
+  overflow: visible;
+}
+
+#tribute-link {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  grid-area: Read_more_button;
+  margin: auto;
+}
+
+#tribute-link button {
+  background: none;
+  color: #ccc;
+  width: 10em;
+  height: 3em;
+  border: 1px solid orangered;
+  font-size: 1em;
+  border-radius: 4px;
+  -webkit-transition: .6s;
+  transition: .6s;
+  overflow: hidden;
+}
+
+#tribute-link button:focus {
+  outline: none;
+}
+
+#tribute-link button:before {
+  content: '';
+  background: rgba(255, 255, 255, 0.5);
+  width: 60px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: .5;
+  -webkit-filter: blur(30px);
+          filter: blur(30px);
+  -webkit-transform: translateX(-130px) skewX(-15deg);
+          transform: translateX(-130px) skewX(-15deg);
+}
+
+#tribute-link button:after {
+  content: '';
+  background: rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 100%;
+  left: 30px;
+  top: 0;
+  opacity: 0;
+  -webkit-filter: blur(30px);
+          filter: blur(30px);
+  -webkit-transform: translate(-100px) scaleX(-15deg);
+          transform: translate(-100px) scaleX(-15deg);
+}
+
+#tribute-link button:hover {
+  background: orangered;
+  cursor: pointer;
+}
+
+#tribute-link button:hover:before {
+  -webkit-transform: translateX(300px) skewX(-15deg);
+          transform: translateX(300px) skewX(-15deg);
+  opacity: .6;
+  -webkit-transition: .7s;
+  transition: .7s;
+}
+
+#tribute-link button:hover:after {
+  -webkit-transform: translateX(300px) skewX(-15deg);
+          transform: translateX(300px) skewX(-15deg);
+  opacity: 1;
+  -webkit-transition: .7s;
+  transition: .7s;
+}
+
+@media only screen and (max-width: 500px) {
+  .grid-container {
+        grid-template-areas: "image" "caption" "header" "text_content" "Read_more_button" "footer";
   }
-  
-  #main {
-    display: grid;
-    grid-template-rows: repeat(4,300px);
-    grid-template-columns: repeat(2,300px);
-    }
-  
-  h1 {
-    margin-top: 10px;
-    display:  grid;
-    grid-column-start:  1;
-    grid-column-end:  2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    text-align: center;
-    color: #87CEEB;
-    background-color: #F0FFFF;
-    }
-  
-  body {
-    /* Native font stack https://getbootstrap.com/docs/4.2/content/reboot/#native-font-stack */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
-    font-size: 1.6rem;
-    line-height: 1.5;
-    text-align: center;
-    color: #333;
-    margin: 0;
+  .grid-container #img-div {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: image;
+    overflow: hidden;
   }
-  
-  #img-div {
-    display: grid;
-    grid-row-start: 1; 
-    }
-  
-  #image {
-    display:  grid;
-    }
-  
-  #img-caption {
-    display: grid;
-    grid-row-start: 2;
-    }
-  
-  #tribute-info {
-    display: grid;
-    grid-row-start: 3;
+  .grid-container #image {
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+    width: 100vw;
   }
+  .grid-container p {
+    font-size: 0.75rem;
+  }
+  .grid-container #tribute-link > button {
+    font-size: 0.5em;
+  }
+}
+/*# sourceMappingURL=stylesheet.css.map */
